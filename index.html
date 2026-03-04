@@ -7,66 +7,112 @@
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <style>
         /* ════ YTHAEN BRAND BADGE ════ */
-.ythaen-signature {
+/* ════ YTHAEN STUDIO CREDIT STYLES ════ */
+.ythaen-studio-credit {
+  background: linear-gradient(to bottom, #08080a, #0d0d13);
+  border-top: 1px solid rgba(0, 210, 255, 0.15);
+  border-bottom: 1px solid rgba(0, 210, 255, 0.05);
+  padding: 80px 5%;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Subtle background grid for the banner */
+.ythaen-studio-credit::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+}
+
+.ysc-wrap {
+  max-width: 900px;
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 20px;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
 }
 
-.y-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border-radius: 50px;
-  background: rgba(0, 210, 255, 0.04);
-  border: 1px solid rgba(0, 210, 255, 0.15);
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+/* 1. The Visual (Animated Logo) */
+.ysc-visual {
+  flex-shrink: 0;
+}
+.ysc-orb {
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,210,255,0.15), transparent 70%);
+  border: 1px solid rgba(0,210,255,0.3);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.ysc-orb::before {
+  content: ''; position: absolute; inset: -15px;
+  border-radius: 50%; border: 1px solid rgba(0,210,255,0.5);
+  opacity: 0; animation: yscRipple 3s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+.ysc-logo {
+  width: 60%; height: auto; object-fit: contain;
 }
 
-.y-badge:hover {
-  background: rgba(0, 210, 255, 0.08);
-  border-color: rgba(0, 210, 255, 0.4);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 210, 255, 0.15);
+/* 2. The Text Content */
+.ysc-text {
+  flex: 1;
 }
-
-.y-text {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: #616170;
-  transition: color 0.3s;
+.ysc-label {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 3px; color: #616170; margin-bottom: 8px;
 }
-
-.y-badge:hover .y-text {
-  color: #e6e8eb;
+.ysc-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800;
+  letter-spacing: -1px; color: #ffffff; margin-bottom: 8px; line-height: 1.1;
 }
-
-.y-brand {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.5px;
+.ysc-cyan {
   background: linear-gradient(135deg, #7aeaff, #00d2ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.ysc-collab {
+  font-size: 0.95rem; font-weight: 400; color: rgba(255,255,255,0.6);
+}
+.ysc-collab strong {
+  color: #e6e8eb; font-weight: 700;
 }
 
-.y-logo-img {
-  height: 14px;
-  width: auto;
-  object-fit: contain;
+/* 3. The Action Button */
+.ysc-action {
+  flex-shrink: 0;
+}
+.ysc-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 28px; border-radius: 50px;
+  background: rgba(0, 210, 255, 0.05);
+  border: 1px solid rgba(0, 210, 255, 0.2);
+  color: #00d2ff; font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 2px;
+  text-decoration: none; transition: all 0.3s ease;
+}
+.ysc-btn:hover {
+  background: #00d2ff; color: #08080a;
+  box-shadow: 0 0 24px rgba(0, 210, 255, 0.25);
+  transform: translateY(-3px);
+}
+
+@keyframes yscRipple {
+  0%   { transform: scale(0.8); opacity: 0.8; border-width: 2px; }
+  100% { transform: scale(1.8); opacity: 0; border-width: 0px; }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .ysc-wrap {
+    flex-direction: column; text-align: center; gap: 24px;
+  }
+  .ysc-text {
+    display: flex; flex-direction: column; align-items: center;
+  }
 }
 
 /* Specific styling for The Solitons credit */
@@ -1262,15 +1308,30 @@
             </div>
         </div>
     </div>
-    <div class="ythaen-signature">
-  <a href="https://ythaen.tech" target="_blank" class="y-badge">
-    <span class="y-text">Engineered by</span>
-    <span class="y-brand">
-      <img src="logo.png" alt="Ythaen" class="y-logo-img">
-      YTHAEN
-    </span>
-  </a>
-</div>
+    <section class="ythaen-studio-credit">
+  <div class="ysc-wrap">
+    
+    <div class="ysc-visual">
+      <div class="ysc-orb">
+        <img src="logo.png" alt="YTHAEN" class="ysc-logo">
+      </div>
+    </div>
+
+    <div class="ysc-text">
+      <div class="ysc-label">System Architecture & Engineering</div>
+      <h2 class="ysc-title">Built by <span class="ysc-cyan">YTHAEN</span></h2>
+      <p class="ysc-collab">A joint initiative with <strong>The Solitons</strong></p>
+    </div>
+
+    <div class="ysc-action">
+      <a href="https://ythaen.tech" target="_blank" class="ysc-btn">
+        <span>Visit ythaen.tech</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+  </div>
+</section>
 
     <script>
         // Audio control functionality
@@ -1437,6 +1498,7 @@
 </body>
 
 </html>
+
 
 
 
