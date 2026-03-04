@@ -6,6 +6,80 @@
     <title>Alok Sharma - Developer Profile</title>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <style>
+        /* ════ YTHAEN BRAND BADGE ════ */
+.ythaen-signature {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.y-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  background: rgba(0, 210, 255, 0.04);
+  border: 1px solid rgba(0, 210, 255, 0.15);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.y-badge:hover {
+  background: rgba(0, 210, 255, 0.08);
+  border-color: rgba(0, 210, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 210, 255, 0.15);
+}
+
+.y-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #616170;
+  transition: color 0.3s;
+}
+
+.y-badge:hover .y-text {
+  color: #e6e8eb;
+}
+
+.y-brand {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #7aeaff, #00d2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.y-logo-img {
+  height: 14px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Specific styling for The Solitons credit */
+.team-credit {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #616170;
+}
+.team-credit strong {
+  color: #e6e8eb;
+  font-weight: 700;
+}
         * {
             margin: 0;
             padding: 0;
@@ -1188,6 +1262,15 @@
             </div>
         </div>
     </div>
+    <div class="ythaen-signature">
+  <a href="https://ythaen.tech" target="_blank" class="y-badge">
+    <span class="y-text">Engineered by</span>
+    <span class="y-brand">
+      <img src="logo.png" alt="Ythaen" class="y-logo-img">
+      YTHAEN
+    </span>
+  </a>
+</div>
 
     <script>
         // Audio control functionality
@@ -1354,5 +1437,6 @@
 </body>
 
 </html>
+
 
 
