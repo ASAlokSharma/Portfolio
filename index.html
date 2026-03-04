@@ -6,113 +6,152 @@
     <title>Alok Sharma - Developer Profile</title>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <style>
-        /* ════ YTHAEN BRAND BADGE ════ */
-/* ════ YTHAEN STUDIO CREDIT STYLES ════ */
-.ythaen-studio-credit {
-  background: linear-gradient(to bottom, #08080a, #0d0d13);
-  border-top: 1px solid rgba(0, 210, 255, 0.15);
-  border-bottom: 1px solid rgba(0, 210, 255, 0.05);
-  padding: 80px 5%;
-  position: relative;
-  overflow: hidden;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-/* Subtle background grid for the banner */
-.ythaen-studio-credit::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: radial-gradient(rgba(0, 210, 255, 0.05) 1px, transparent 1px);
-  background-size: 30px 30px;
-  pointer-events: none;
-}
-
-.ysc-wrap {
-  max-width: 900px;
-  margin: 0 auto;
+/* ════ STUDIO CREDIT (NATIVE AESTHETIC) ════ */
+#studio-credit {
+  padding: 40px 0 100px; /* Sits nicely above the footer */
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  justify-content: center;
   position: relative;
   z-index: 1;
 }
 
-/* 1. The Visual (Animated Logo) */
-.ysc-visual {
-  flex-shrink: 0;
+.sc-card {
+  background: var(--bg2);
+  border: 1px solid var(--borderS);
+  border-radius: var(--rL);
+  padding: 56px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.ysc-orb {
-  width: 90px; height: 90px;
+
+.sc-card:hover {
+  border-color: rgba(0, 210, 255, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(0,0,0,0.45);
+}
+
+.sc-glow {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--glow), transparent 60%);
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.45s;
+}
+
+.sc-card:hover .sc-glow {
+  opacity: 1;
+}
+
+/* Orb & Logo */
+.sc-orb {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 24px auto;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,210,255,0.15), transparent 70%);
-  border: 1px solid rgba(0,210,255,0.3);
-  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle, rgba(0,210,255,0.1), transparent 70%);
+  border: 1px solid rgba(0,210,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
 }
-.ysc-orb::before {
-  content: ''; position: absolute; inset: -15px;
-  border-radius: 50%; border: 1px solid rgba(0,210,255,0.5);
-  opacity: 0; animation: yscRipple 3s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+
+.sc-orb::before, .sc-orb::after {
+  content: ''; position: absolute; inset: 0;
+  border-radius: 50%; border: 1px solid var(--acc);
+  opacity: 0; pointer-events: none;
+  animation: scRipple 3s cubic-bezier(0.25, 1, 0.5, 1) infinite;
 }
-.ysc-logo {
-  width: 60%; height: auto; object-fit: contain;
+.sc-orb::after { animation-delay: 1.5s; }
+
+.sc-logo {
+  width: 55%;
+  height: auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
 }
 
-/* 2. The Text Content */
-.ysc-text {
-  flex: 1;
-}
-.ysc-label {
-  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 3px; color: #616170; margin-bottom: 8px;
-}
-.ysc-title {
-  font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800;
-  letter-spacing: -1px; color: #ffffff; margin-bottom: 8px; line-height: 1.1;
-}
-.ysc-cyan {
-  background: linear-gradient(135deg, #7aeaff, #00d2ff);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-.ysc-collab {
-  font-size: 0.95rem; font-weight: 400; color: rgba(255,255,255,0.6);
-}
-.ysc-collab strong {
-  color: #e6e8eb; font-weight: 700;
+/* Typography */
+.sc-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 14px;
 }
 
-/* 3. The Action Button */
-.ysc-action {
-  flex-shrink: 0;
+.sc-title em {
+  font-family: var(--fontQ); /* The elegant Cormorant Garamond font */
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.65em;
+  display: block; /* Stacks "Engineered by" elegantly above "YTHAEN" */
+  margin-bottom: 2px;
 }
-.ysc-btn {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 14px 28px; border-radius: 50px;
-  background: rgba(0, 210, 255, 0.05);
-  border: 1px solid rgba(0, 210, 255, 0.2);
-  color: #00d2ff; font-size: 0.75rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 2px;
-  text-decoration: none; transition: all 0.3s ease;
+
+.sc-brand {
+  background: linear-gradient(135deg, var(--acc-l), var(--acc));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
 }
-.ysc-btn:hover {
-  background: #00d2ff; color: #08080a;
-  box-shadow: 0 0 24px rgba(0, 210, 255, 0.25);
+
+.sc-collab {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--muted);
+  margin-bottom: 36px;
+}
+
+.sc-collab strong {
+  color: var(--off);
+  font-weight: 800;
+}
+
+/* Action Button */
+.sc-btn {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 12px 26px;
+  border-radius: 50px;
+  background: var(--glass);
+  border: 1px solid var(--borderS);
+  color: var(--off);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.sc-btn:hover {
+  border-color: var(--acc);
+  color: var(--bg);
+  background: var(--acc);
+  box-shadow: 0 0 24px var(--glow);
   transform: translateY(-3px);
 }
 
-@keyframes yscRipple {
-  0%   { transform: scale(0.8); opacity: 0.8; border-width: 2px; }
-  100% { transform: scale(1.8); opacity: 0; border-width: 0px; }
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .ysc-wrap {
-    flex-direction: column; text-align: center; gap: 24px;
-  }
-  .ysc-text {
-    display: flex; flex-direction: column; align-items: center;
-  }
+@keyframes scRipple {
+  0%   { transform: scale(0.8); opacity: 0.6; border-width: 1.5px; }
+  100% { transform: scale(2.4); opacity: 0; border-width: 0px; }
 }
 
 /* Specific styling for The Solitons credit */
@@ -1308,28 +1347,22 @@
             </div>
         </div>
     </div>
-    <section class="ythaen-studio-credit">
-  <div class="ysc-wrap">
-    
-    <div class="ysc-visual">
-      <div class="ysc-orb">
-        <img src="logo.png" alt="YTHAEN" class="ysc-logo">
+    <section id="studio-credit">
+  <div class="wrap">
+    <div class="sc-card rev">
+      <div class="sc-glow"></div>
+      
+      <div class="sc-orb">
+        <img src="logo.png" alt="Ythaen" class="sc-logo">
       </div>
-    </div>
 
-    <div class="ysc-text">
-      <div class="ysc-label">System Architecture & Engineering</div>
-      <h2 class="ysc-title">Built by <span class="ysc-cyan">YTHAEN</span></h2>
-      <p class="ysc-collab">A joint initiative with <strong>The Solitons</strong></p>
-    </div>
+      <h2 class="sc-title"><em>Engineered by</em> <span class="sc-brand">YTHAEN</span></h2>
+      <p class="sc-collab">In collaboration with <strong>The Solitons</strong></p>
 
-    <div class="ysc-action">
-      <a href="https://ythaen.tech" target="_blank" class="ysc-btn">
-        <span>Visit ythaen.tech</span>
-        <i class="fa-solid fa-arrow-right"></i>
+      <a href="https://ythaen.tech" target="_blank" class="sc-btn">
+        Explore the Void <i class="fa-solid fa-arrow-right"></i>
       </a>
     </div>
-
   </div>
 </section>
 
@@ -1498,6 +1531,7 @@
 </body>
 
 </html>
+
 
 
 
